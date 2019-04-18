@@ -1,6 +1,9 @@
 class_name Portal extends Area2D
 
-# see https://www.reddit.com/r/godot/comments/9wqhd0/signals_with_arguments/
+# When a player enters a portal, they should be transported to a connected portal
+# on a different level. See Game.gd
+
+# https://www.reddit.com/r/godot/comments/9wqhd0/signals_with_arguments/
 
 export var level_id : String
 export var portal_id : String
