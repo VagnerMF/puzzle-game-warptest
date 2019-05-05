@@ -108,7 +108,8 @@ func warp_to_level(new_level_id:String, target_portal_id:String) -> void:
 	# Update the current level
 	current_level = new_level_id
 	# Add the new current level to the tree
-	add_child(levels[current_level])
+	#add_child(levels[current_level])
+	call_deferred("add_child", levels[current_level])
 
 	# Re-add the player to the new map
 	if p!=null:
