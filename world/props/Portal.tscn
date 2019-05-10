@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/sprites/sokoban_tilesheet.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 11 )
+extents = Vector2( 27.7776, 28.5617 )
 
 [node name="Portal" type="Area2D"]
 script = ExtResource( 1 )

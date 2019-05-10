@@ -10,7 +10,7 @@ export var portal_id : String
 export var target_level_id: String
 export var target_portal_id: String
 
-onready var root = get_node("/root/Game")
+onready var main = get_node("/root/Game")
 
 signal player_entered
 signal player_exited
@@ -19,7 +19,7 @@ func _ready() -> void:
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
 	
-	connect("player_entered", root, "portal")
+	connect("player_entered", main, "portal")
 	
 func _on_body_entered(body: PhysicsBody2D) -> void:
 	if not body is Player:
@@ -29,6 +29,5 @@ func _on_body_entered(body: PhysicsBody2D) -> void:
 func _on_body_exited(body: PhysicsBody2D) -> void:
 	if not body is Player:
 		return
-	print("exit portal")
 	emit_signal("player_exited")
 

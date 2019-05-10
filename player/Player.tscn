@@ -40,18 +40,23 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 23, 26 )
+extents = Vector2( 23, 23.8757 )
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 0, 1.80749 )
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
@@ -60,4 +65,7 @@ shape = SubResource( 2 )
 current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
+__meta__ = {
+"_edit_lock_": true
+}
 

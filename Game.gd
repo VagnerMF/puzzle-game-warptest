@@ -1,16 +1,12 @@
 class_name Game extends Node
-
-# https://godotengine.org/qa/30426/how-do-i-connect-and-switch-between-mutliple-tile-maps
-# http://docs.godotengine.org/en/stable/classes/class_node.html
-
-# TODO:
-# transfer the player instance from one level 
-# 		to another when switching levels
-# add portals for the player to walk thru from level to level
+# TODO class description
 
 # Level IDs
 const LEVEL1 = "warehouse1"
 const LEVEL2 = "warehouse2"
+
+const start_level_id = LEVEL1
+var current_level_id = start_level_id
 
 var levelres = {	# Where to create the levels from
 	LEVEL1 : "res://world/levels/Level1.tscn",
@@ -22,114 +18,57 @@ var levels = {		# Pointers to the Level instances
 	LEVEL2 : null
 }
 
-var current_level = null # Refers to a Level ID
-var p = null			 # Player instance
-
 func _ready():
-	start_level(LEVEL1)
+	create_level(start_level_id)
 
-func _process(delta):
-	if Input.is_action_just_pressed("1"):
-		switch_level(LEVEL1)
-	elif Input.is_action_just_pressed("2"):
-		switch_level(LEVEL2)
+#func _process(delta):
+#	if Input.is_action_just_pressed("1"):
+#		switch_level(LEVEL1)
+#	elif Input.is_action_just_pressed("2"):
+#		switch_level(LEVEL2)
+
 
 # This method is purely for initializing the starting level
-func start_level(level_id:String) -> void:
+func create_level(level_id:String) -> void:
 	# Initialize the first map
 	levels[level_id] = load(levelres[level_id]).instance()
 	levels[level_id].z_index = -1
-	current_level = level_id
-	add_child(levels[current_level])
-	print("Start map initialized")
-	p = levels[current_level].player
+	current_level_id = level_id
+	self.call_deferred("add_child", levels[current_level_id])
+	levels[current_level_id].set_owner(self)
+	
+	print(level_id+" initialized")
+	#p = levels[current_level].player
 
-# This is a test method for testing the removal and addition of levels. 
-func switch_level(new_level_id:String) -> void:
-	
-	if current_level != null and levels[current_level] != null:
-		# Save and remove player
-		if levels[current_level].player != null:
-			remove_child(levels[current_level].player)
-		else:
-			#print("Can't remove player, it's NULL")
-			pass
-		# Remove current level from tree
-		remove_child(levels[current_level])
-	else:
-		#print("Cant remove current level, NULL")
-		pass
-	
-	# Switch to the new level if it has been created, or create it.
-	if levels[new_level_id]==null:
-		# Level has not been spawned, so create it.
-		print("New level "+str(new_level_id)+" created")
-		levels[new_level_id] = load(levelres[new_level_id]).instance()
-		levels[new_level_id].z_index = -1
-	
-	# Update the current level
-	current_level = new_level_id
-	# Add the new current level to the tree
-	add_child(levels[current_level])
 
-	# Re-add the player to the new map
-	if p!=null:
-		levels[current_level].add_child(p)
-		levels[current_level].player = p
-	else:
-		#print("p is null; no player to add!")
-		pass
-	#print(levels[current_level].player)
-
-# This method is similar to switch_level,
-# but this tries to move the Player tree to the new Level. See Remote debug...
-func warp_to_level(new_level_id:String, target_portal_id:String) -> void:
-	
-	if current_level != null and levels[current_level] != null:
-		# Save and remove player
-		if levels[current_level].player != null:
-			remove_child(levels[current_level].player)
-		else:
-			#print("Can't remove player, it's NULL")
-			pass
-		# Remove current level from tree
-		remove_child(levels[current_level])
-	else:
-		#print("Cant remove current level, NULL")
-		pass
-	
-	# Switch to the new level if it has been created, or create it.
-	if levels[new_level_id]==null:
-		# Level has not been spawned, so create it.
-		print("NEW LEVEL "+str(new_level_id)+" created")
-		levels[new_level_id] = load(levelres[new_level_id]).instance()
-		levels[new_level_id].z_index = -1
-	
-	# Update the current level
-	current_level = new_level_id
-	# Add the new current level to the tree
-	#add_child(levels[current_level])
-	call_deferred("add_child", levels[current_level])
-
-	# Re-add the player to the new map
-	if p!=null:
-		
-		# ****************** BROKEN! ****************************************
-		# Can't seem to get the player to display on the new level.
-		# Looking in the Remote tree, it looks the player isn't being added
-		# as a child of Level2.
-		
-		levels[current_level].call_deferred("add_child", p)
-		#levels[current_level].add_child(p)
-		levels[current_level].player = p
-		
-		#levels[current_level].player.set_position(Vector2(192, 192))
-		print(p.name)
-	else:
-		print("p is null; no player to add!")
-	
 # This method is connected to the signal from a Portal, triggering a warp (Portal.gd)
 func portal(level_id:String, portal_id:String, target_level_id:String, target_portal_id:String):
-	print("WARP FROM "+level_id+", "+portal_id+" TO "+target_level_id+", "+target_portal_id)
-	warp_to_level(target_level_id, target_portal_id)
-
+	print("WARP FROM "+level_id+"-"+portal_id+" TO "+target_level_id+"-"+target_portal_id)
+	
+	# Save the player and remove it from the SceneTree
+	var current_level_node = levels[current_level_id] #find_node("Level*", false, true)
+	print(current_level_node.name)
+	var player = current_level_node.get_node("Player")
+	print(player.name)
+	current_level_node.call_deferred("remove_child", player) #current.remove_child(player)
+	
+	# Remove the current level from the SceneTree
+	self.call_deferred("remove_child", current_level_node) #self.remove_child(current)
+	
+	# Add the new level to the SceneTree
+	if levels[target_level_id] == null:
+		create_level(target_level_id)
+	else:
+		self.call_deferred("add_child", levels[target_level_id]) #self.add_child(levels[target_level_id])
+	# The new level is now the current level
+	current_level_id = target_level_id
+	current_level_node = levels[current_level_id]
+	print(levels[current_level_id].name, " ", current_level_node.name)
+	
+	# Re-attach the player to the SceneTree inside the level
+	current_level_node.call_deferred("add_child", player) #levels[current_level].add_child(player)
+	player.set_owner(current_level_node)
+	
+	# Place the player at the receiving portal
+	# TODO
+	player.set_global_position(Vector2(64, 64))
