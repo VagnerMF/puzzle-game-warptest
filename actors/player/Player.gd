@@ -31,8 +31,7 @@ func check_box_collision(delta:float, motion: Vector2) -> void:
 	var box : = get_slide_collision(0).collider as Box
 	if box:
 		push_timer += delta
-		if push_timer > PUSH_TIME: # After 1 seconds
-			#print("PUSH!!!")
+		if push_timer > PUSH_TIME:
 			box.push(push_speed * motion)
 	else:
 		push_timer = 0.0
