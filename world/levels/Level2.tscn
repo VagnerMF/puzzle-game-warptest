@@ -60,5 +60,5 @@ target_portal_id = "1"
 out_direction = 2
 
 [node name="RedPlatform" parent="." instance=ExtResource( 5 )]
-position = Vector2( 326, 106.923 )
+position = Vector2( 320, 128 )
 
