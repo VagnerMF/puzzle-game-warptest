@@ -5,12 +5,22 @@ class_name Portal extends Area2D
 
 # https://www.reddit.com/r/godot/comments/9wqhd0/signals_with_arguments/
 
+enum DIRECTION { # The direction the player exits the portal to
+	NONE,
+	EAST,
+	NORTH,
+	WEST,
+	SOUTH
+}
+
 export var level_id : String
 export var portal_id : String
-export var target_level_id: String
-export var target_portal_id: String
+export var target_level_id : String
+export var target_portal_id : String
+export (DIRECTION) var out_direction = DIRECTION.NONE
 
 onready var LevelManager = get_node("/root/Main/World/LevelManager")
+var primed = true # Whether or not the Portal can be triggered
 
 signal player_entered
 signal player_exited
@@ -24,10 +34,26 @@ func _ready() -> void:
 func _on_body_entered(body: PhysicsBody2D) -> void:
 	if not body is Player:
 		return
-	emit_signal("player_entered", level_id, portal_id, target_level_id, target_portal_id)
+	if primed:
+		emit_signal("player_entered", level_id, portal_id, target_level_id, target_portal_id)
 
 func _on_body_exited(body: PhysicsBody2D) -> void:
 	if not body is Player:
 		return
+	primed = true
 	emit_signal("player_exited")
-	
+
+func get_out_direction(cell_size: Vector2) -> Vector2:
+	# TODO spawn player in center of tile or at edges?
+	return Vector2(get_position().x + cell_size.x/2, get_position().y + cell_size.y/2)
+#	match out_direction:
+#		DIRECTION.EAST:
+#			return Vector2(get_position().x + cell_size.x, get_position().y + cell_size.y/2)
+#		DIRECTION.NORTH:
+#			return Vector2(get_position().x + cell_size.x/2, get_position().y)
+#		DIRECTION.WEST:
+#			return Vector2(get_position().x, get_position().y + cell_size.y/2)
+#		DIRECTION.SOUTH:
+#			return Vector2(get_position().x + cell_size.x/2, get_position().y)
+#		_: # default
+#			return get_position()

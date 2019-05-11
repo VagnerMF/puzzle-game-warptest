@@ -25,6 +25,7 @@ var levels = {		# Pointers to the Level instances
 # Variables to hold the keys to the levels dictionary
 const START_LEVEL_KEY = LEVEL_1
 var current_level_key = START_LEVEL_KEY
+var grid_cell_size : Vector2
 
 func _ready():
 	create_level(START_LEVEL_KEY)
@@ -35,6 +36,7 @@ func create_level(level_key:String) -> void:
 	current_level_key = level_key
 	self.call_deferred("add_child", levels[current_level_key])
 	levels[current_level_key].set_owner(self)
+	grid_cell_size = levels[current_level_key].get_node("Grid").get_cell_size()
 	print(level_key+" initialized")
 
 # This method is connected to the signal from a Portal, triggering a scene change (Portal.gd)
@@ -62,5 +64,12 @@ func portal(level_key:String, portal_id:String, target_level_key:String, target_
 	player.set_owner(current_level_node)
 	
 	# Place the player at the receiving portal
-	# TODO
-	player.set_position(Vector2(64, 64))
+	# TODO - relative vs. global position, 
+	#		 how tilemaps work, rewatch grid video/ how it works
+	for object in current_level_node.get_node("Grid").get_children():
+		if object is Portal:
+			if object.portal_id == target_portal_id:
+				object.primed = false
+				player.set_position(object.get_out_direction(grid_cell_size))
+				break
+	#player.set_position(Vector2(64, 64))
