@@ -8,36 +8,33 @@ class_name LevelManager extends Node
 # This way, changes made to objects inside of a level persist when the player leaves.
 # See: https://godotengine.org/qa/44664/how-can-i-move-the-player-from-one-tilemap-to-another?show=44899#c44899
 
+# Constants used to name and identify the level keys 
+const LEVEL_1 = "warehouse1"
+const LEVEL_2 = "warehouse2"
 
-# Constant used to name and identify the level keys 
-const LEVEL1 = "warehouse1"
-const LEVEL2 = "warehouse2"
-
-var levelRes = {	# Where to create the levels from
-	LEVEL1 : "res://world/levels/Level1.tscn",
-	LEVEL2 : "res://world/levels/Level2.tscn"
+var level_res = {	# Where to create the levels from
+	LEVEL_1 : "res://world/levels/Level1.tscn",
+	LEVEL_2 : "res://world/levels/Level2.tscn"
 }
 
 var levels = {		# Pointers to the Level instances
-	LEVEL1 : null,
-	LEVEL2 : null
+	LEVEL_1 : null,
+	LEVEL_2 : null
 }
 
 # Variables to hold the keys to the levels dictionary
-const startLevelKey = LEVEL1
-var currentLevelKey = startLevelKey
+const START_LEVEL_KEY = LEVEL_1
+var current_level_key = START_LEVEL_KEY
 
 func _ready():
-	create_level(startLevelKey)
+	create_level(START_LEVEL_KEY)
 
 # This method is for initializing new levels
 func create_level(level_key:String) -> void:
-	# Initialize the first map
-	levels[level_key] = load(levelRes[level_key]).instance()
-	currentLevelKey = level_key
-	self.call_deferred("add_child", levels[currentLevelKey])
-	levels[currentLevelKey].set_owner(self)
-	
+	levels[level_key] = load(level_res[level_key]).instance()
+	current_level_key = level_key
+	self.call_deferred("add_child", levels[current_level_key])
+	levels[current_level_key].set_owner(self)
 	print(level_key+" initialized")
 
 # This method is connected to the signal from a Portal, triggering a scene change (Portal.gd)
@@ -45,7 +42,7 @@ func portal(level_key:String, portal_id:String, target_level_key:String, target_
 	print("WARP FROM "+level_key+"-"+portal_id+" TO "+target_level_key+"-"+target_portal_id)
 	
 	# Save the player and remove it from the SceneTree
-	var current_level_node = levels[currentLevelKey]
+	var current_level_node = levels[current_level_key]
 	var player = current_level_node.get_node("Player")
 	current_level_node.call_deferred("remove_child", player)
 	
@@ -57,8 +54,8 @@ func portal(level_key:String, portal_id:String, target_level_key:String, target_
 		create_level(target_level_key)
 	else:
 		self.call_deferred("add_child", levels[target_level_key])
-	currentLevelKey = target_level_key # The new level is now the current level
-	current_level_node = levels[currentLevelKey]
+	current_level_key = target_level_key # The new level is now the current level
+	current_level_node = levels[current_level_key]
 	
 	# Re-attach the player to the SceneTree inside the level
 	current_level_node.call_deferred("add_child", player)
