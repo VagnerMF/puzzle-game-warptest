@@ -2,9 +2,10 @@
 
 [ext_resource path="res://world/sokoban_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://world/levels/Grid.gd" type="Script" id=2]
-[ext_resource path="res://world/props/grid_box/GridBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/props/boxes/grid_box/GridBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://world/props/portal/Portal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://world/props/platforms/RedPlatform.tscn" type="PackedScene" id=5]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )

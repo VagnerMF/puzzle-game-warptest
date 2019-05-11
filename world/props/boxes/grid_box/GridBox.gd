@@ -1,8 +1,7 @@
-extends Box
-class_name GridBox
+class_name GridBox extends Box
+
 
 onready var tween : Tween = $Tween
-
 export var sliding_time : = 1
 
 var tile_map : TileMap

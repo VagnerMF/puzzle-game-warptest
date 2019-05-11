@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Box",
 "language": "GDScript",
-"path": "res://world/props/box/Box.gd"
+"path": "res://world/props/boxes/Box.gd"
 }, {
 "base": "Box",
 "class": "GridBox",
 "language": "GDScript",
-"path": "res://world/props/grid_box/GridBox.gd"
+"path": "res://world/props/boxes/grid_box/GridBox.gd"
 }, {
 "base": "Node",
 "class": "LevelManager",
@@ -27,7 +27,12 @@ _global_script_classes=[ {
 "base": "Box",
 "class": "PhysicsBox",
 "language": "GDScript",
-"path": "res://world/props/physics_box/PhysicsBox.gd"
+"path": "res://world/props/boxes/physics_box/PhysicsBox.gd"
+}, {
+"base": "Area2D",
+"class": "Platform",
+"language": "GDScript",
+"path": "res://world/props/platforms/Platform.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -44,6 +49,7 @@ _global_script_class_icons={
 "GridBox": "",
 "LevelManager": "",
 "PhysicsBox": "",
+"Platform": "",
 "Player": "",
 "Portal": ""
 }

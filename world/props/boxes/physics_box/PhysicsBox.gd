@@ -1,5 +1,4 @@
-extends Box
-class_name PhysicsBox
+class_name PhysicsBox extends Box
 
 
 func push(velocity: Vector2) -> void:
