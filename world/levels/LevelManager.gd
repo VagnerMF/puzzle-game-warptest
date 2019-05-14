@@ -11,15 +11,18 @@ class_name LevelManager extends Node
 # Constants used to name and identify the level keys 
 const LEVEL_1 = "warehouse1"
 const LEVEL_2 = "warehouse2"
+const LEVEL_3 = "warehouse3"
 
 var level_res = {	# Where to create the levels from
 	LEVEL_1 : "res://world/levels/Level1.tscn",
-	LEVEL_2 : "res://world/levels/Level2.tscn"
+	LEVEL_2 : "res://world/levels/Level2.tscn",
+	LEVEL_3 : "res://world/levels/Level3.tscn"
 }
 
 var levels = {		# Pointers to the Level instances
 	LEVEL_1 : null,
-	LEVEL_2 : null
+	LEVEL_2 : null,
+	LEVEL_3 : null
 }
 
 # Variables to hold the keys to the levels dictionary
