@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://world/sokoban_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://world/levels/Grid.gd" type="Script" id=2]
 [ext_resource path="res://world/props/boxes/physics_box/PhysicsBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://world/props/boxes/grid_box/GridBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://world/props/portal/Portal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://actors/player/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://world/props/platforms/RedPlatform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://world/props/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://actors/player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://world/props/platforms/RedPlatform.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -54,7 +55,7 @@ z_index = 1
 z_as_relative = true
 
 [node name="GridBox" parent="Grid" instance=ExtResource( 4 )]
-position = Vector2( 163.457, 159.025 )
+position = Vector2( 384, 128 )
 z_as_relative = true
 
 [node name="GridBox2" parent="Grid" instance=ExtResource( 4 )]
@@ -77,12 +78,20 @@ target_level_id = "warehouse3"
 target_portal_id = "1"
 out_direction = 1
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 288.911, 134.555 )
+[node name="Door1" parent="Grid" instance=ExtResource( 6 )]
+position = Vector2( 96, 288 )
+door = "1-1"
+
+[node name="Door2" parent="Grid" instance=ExtResource( 6 )]
+position = Vector2( 288, 96 )
+door = "1-2"
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 288, 192 )
 z_index = 1
 collision/safe_margin = 0.001
 move_speed = 300.0
 
-[node name="RedPlatform" parent="." instance=ExtResource( 7 )]
+[node name="RedPlatform" parent="." instance=ExtResource( 8 )]
 position = Vector2( 384, 192 )
-
+door = "1-2"

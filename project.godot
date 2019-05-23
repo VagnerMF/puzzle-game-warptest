@@ -60,6 +60,10 @@ config/name="Puzzle Game Warp Test"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://autoload/Global.gd"
+
 [display]
 
 window/size/width=640

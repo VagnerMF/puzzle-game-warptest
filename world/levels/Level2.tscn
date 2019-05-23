@@ -48,7 +48,7 @@ tile_data = PoolIntArray( 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 
 script = ExtResource( 2 )
 
 [node name="GridBox" parent="Grid" instance=ExtResource( 3 )]
-position = Vector2( 127, 128 )
+position = Vector2( 254, 128 )
 z_as_relative = true
 
 [node name="Portal" parent="Grid" instance=ExtResource( 4 )]
@@ -61,4 +61,4 @@ out_direction = 2
 
 [node name="RedPlatform" parent="." instance=ExtResource( 5 )]
 position = Vector2( 320, 128 )
-
+door = "1-1"

@@ -7,4 +7,3 @@
 [node name="World" type="Node2D" parent="."]
 
 [node name="LevelManager" parent="World" instance=ExtResource( 1 )]
-
