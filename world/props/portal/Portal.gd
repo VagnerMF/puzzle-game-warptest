@@ -15,11 +15,11 @@ export var level_id : String
 export var portal_id : String
 export var target_level_id : String
 export var target_portal_id : String
-export (DIRECTION) var out_direction = DIRECTION.NONE
+export (DIRECTION) var out_direction := DIRECTION.NONE
 
 #onready var LevelManager = get_node("/root/Main/GameWorld/LevelManager")
-onready var LevelManager = find_parent("LevelManager")
-var primed = true # Whether or not the Portal can be triggered
+onready var LevelManager := find_parent("LevelManager")
+var primed := true # Whether or not the Portal can be triggered
 
 signal player_entered
 signal player_exited
