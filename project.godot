@@ -14,12 +14,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://world/props/boxes/Box.gd"
 }, {
+"base": "Node2D",
+"class": "GameWorld",
+"language": "GDScript",
+"path": "res://world/GameWorld.gd"
+}, {
 "base": "Box",
 "class": "GridBox",
 "language": "GDScript",
 "path": "res://world/props/boxes/grid_box/GridBox.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "LevelManager",
 "language": "GDScript",
 "path": "res://world/levels/LevelManager.gd"
@@ -43,15 +48,22 @@ _global_script_classes=[ {
 "class": "Portal",
 "language": "GDScript",
 "path": "res://world/props/portal/Portal.gd"
+}, {
+"base": "MarginContainer",
+"class": "TitleScreen",
+"language": "GDScript",
+"path": "res://screens/title/TitleScreen.gd"
 } ]
 _global_script_class_icons={
 "Box": "",
+"GameWorld": "",
 "GridBox": "",
 "LevelManager": "",
 "PhysicsBox": "",
 "Platform": "",
 "Player": "",
-"Portal": ""
+"Portal": "",
+"TitleScreen": ""
 }
 
 [application]
