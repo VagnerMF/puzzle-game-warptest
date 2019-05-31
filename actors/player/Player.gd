@@ -20,9 +20,15 @@ func _physics_process(delta: float) -> void:
 	update_animation(motion)
 	move_and_slide(motion.normalized() * move_speed, Vector2())
 	if get_slide_count() > 0:
-		check_box_collision(delta, motion)
+		
+		if get_slide_collision(0).collider is Box:
+			check_box_collision(delta, motion)
+		elif get_slide_collision(0).collider is Talker:
+			check_talker_collision(delta, motion)
+	
 	else:
 		push_timer = 0.0
+
 
 func check_box_collision(delta:float, motion: Vector2) -> void:
 	if abs(motion.x) + abs(motion.y) > 1:
@@ -35,6 +41,16 @@ func check_box_collision(delta:float, motion: Vector2) -> void:
 			box.push(push_speed * motion)
 	else:
 		push_timer = 0.0
+
+
+func check_talker_collision(delta:float, motion:Vector2) -> void:
+	if abs(motion.x) + abs(motion.y) > 1:
+		return
+	var talker : = get_slide_collision(0).collider as Talker
+	if talker and Input.is_action_just_pressed("ui_accept"):
+		# Speak, Horatio!
+		print("Speak!")
+		talker.speak()
 
 
 func update_animation(motion: Vector2) -> void:

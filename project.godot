@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://world/props/portal/Portal.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Talker",
+"language": "GDScript",
+"path": "res://actors/talker/Talker.gd"
+}, {
 "base": "MarginContainer",
 "class": "TitleScreen",
 "language": "GDScript",
@@ -63,6 +68,7 @@ _global_script_class_icons={
 "Platform": "",
 "Player": "",
 "Portal": "",
+"Talker": "",
 "TitleScreen": ""
 }
 
