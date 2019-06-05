@@ -8,11 +8,12 @@ onready var label_rect : Rect2 = label.get_rect() # Cache the original pos
 
 onready var timer := $TextTimer
 
-var dialog := [
-	"Trying to get this damn label to work though.",
-	"arblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarbl",
-	"I'm doing ok."
-]
+#var dialog := [
+#	"Trying to get this damn label to work though.",
+#	"arblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarbl",
+#	"I'm doing ok."
+#]
+export (Array, String) var dialog
 var page := 0
 
 

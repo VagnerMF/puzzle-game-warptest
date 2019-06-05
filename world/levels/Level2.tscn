@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://world/sokoban_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://world/levels/Grid.gd" type="Script" id=2]
 [ext_resource path="res://world/props/boxes/grid_box/GridBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://world/props/portal/Portal.tscn" type="PackedScene" id=4]
-[ext_resource path="res://world/props/platforms/RedPlatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/talker/Talker.tscn" type="PackedScene" id=5]
+[ext_resource path="res://world/props/platforms/RedPlatform.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -59,6 +60,10 @@ target_level_id = "warehouse1"
 target_portal_id = "1"
 out_direction = 2
 
-[node name="RedPlatform" parent="." instance=ExtResource( 5 )]
+[node name="Talker" parent="Grid" instance=ExtResource( 5 )]
+position = Vector2( 158, 96 )
+dialog = [ "It is a secret to everyone." ]
+
+[node name="RedPlatform" parent="." instance=ExtResource( 6 )]
 position = Vector2( 320, 128 )
 door = "1-1"
