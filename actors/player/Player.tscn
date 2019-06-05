@@ -40,7 +40,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 23, 23.8757 )
+extents = Vector2( 23, 27 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, 1.80749 )
