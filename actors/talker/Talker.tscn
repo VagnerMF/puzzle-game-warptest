@@ -18,9 +18,15 @@ dialog = [ "" ]
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 region_rect = Rect2( 1226.66, 310.562, 0, 1.6702 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TextTimer" type="Timer" parent="."]
 wait_time = 0.02
@@ -38,4 +44,7 @@ custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 visible_characters = 0
 scroll_active = false
+__meta__ = {
+"_edit_lock_": true
+}
 [connection signal="timeout" from="TextTimer" to="." method="_on_TextTimer_timeout"]

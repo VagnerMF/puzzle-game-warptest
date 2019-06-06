@@ -8,17 +8,12 @@ onready var label_rect : Rect2 = label.get_rect() # Cache the original pos
 
 onready var timer := $TextTimer
 
-#var dialog := [
-#	"Trying to get this damn label to work though.",
-#	"arblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarblarbl",
-#	"I'm doing ok."
-#]
 export (Array, String) var dialog
 var page := 0
 
 
 func _ready():
-	print(spr_w, spr_h)
+	#print(spr_w, spr_h)
 	label.set_use_bbcode(true)
 	set_label(dialog[page])
 
@@ -54,12 +49,6 @@ func reposition_label(text:String) -> void:
 	var lines_needed = ceil(string_size.x / label_rect.size.x)
 	var top_offset = letter_height * (lines_needed+1)
 	label.set_margin(MARGIN_TOP, MARGIN_BOTTOM-top_offset)
-#	print("label_rect.position.y ", label_rect.position.y)
-#	print("letter_height ", letter_height)
-#	print("string_size ", string_size)
-#	print("label_rect ", label_rect.size)
-#	print("lines_needed ", lines_needed)
-#	print("top_offset ", top_offset)
 
 
 func _on_TextTimer_timeout():
