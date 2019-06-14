@@ -30,7 +30,10 @@ func _physics_process(delta: float) -> void:
 	elif motion.y > 0:
 		direction = "down"
 	update_animation(motion)
-	move_and_slide(motion.normalized() * move_speed, Vector2())
+	move_and_slide(
+		motion.normalized() * move_speed, 
+		Vector2()
+	)
 	if get_slide_count() > 0:
 		if get_slide_collision(0).collider is Box:
 			check_box_collision(delta, motion)
