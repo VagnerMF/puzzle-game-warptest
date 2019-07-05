@@ -79,5 +79,5 @@ func check_box_collision(delta:float, motion: Vector2) -> void:
 func update_animation(motion: Vector2) -> void:
 	if motion.x==0 and motion.y==0:
 		animated_sprite.stop()
-	elif animated_sprite.animation != direction:
+	else:
 		animated_sprite.play(direction)
