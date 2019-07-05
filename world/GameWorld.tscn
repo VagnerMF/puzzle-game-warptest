@@ -1,9 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://world/GameWorld.gd" type="Script" id=1]
 [ext_resource path="res://world/levels/LevelManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://backgrounds/black_square.png" type="Texture" id=3]
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="LevelManager" parent="." instance=ExtResource( 2 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="BlackParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/BlackParallaxLayer"]
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 700, 400 )
