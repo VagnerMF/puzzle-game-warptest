@@ -5,11 +5,11 @@
 [ext_resource path="res://fonts/C64.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://screens/title/assets/characters.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 3 )
 
@@ -56,7 +56,7 @@ alignment = 1
 margin_top = 68.0
 margin_right = 596.0
 margin_bottom = 98.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Start"
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Menu/CenterRow"]
@@ -76,6 +76,6 @@ expand = true
 margin_top = 304.0
 margin_right = 600.0
 margin_bottom = 320.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Version Number 0.0.1"
 [connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
