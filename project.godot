@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/talker/Talker.gd"
 }, {
-"base": "MarginContainer",
+"base": "Control",
 "class": "TitleScreen",
 "language": "GDScript",
 "path": "res://screens/title/TitleScreen.gd"
