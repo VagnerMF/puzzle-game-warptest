@@ -1,6 +1,6 @@
 extends Node
 
-var doors = {
+var id = {
 	"1-1": false,
 	"1-2": false
 }

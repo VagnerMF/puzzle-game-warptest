@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/from_center.png-2859bbc4b5deb72b2408114e4fac8f33.stex"
+path="res://.import/curtain.png-5dbd4676444a95ae3c4ec4f3e7000c6e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shaders/blacktransition/from_center.png"
-dest_files=[ "res://.import/from_center.png-2859bbc4b5deb72b2408114e4fac8f33.stex" ]
+source_file="res://shaders/masks/curtain.png"
+dest_files=[ "res://.import/curtain.png-5dbd4676444a95ae3c4ec4f3e7000c6e.stex" ]
 
 [params]
 

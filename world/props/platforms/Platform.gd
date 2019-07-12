@@ -19,7 +19,7 @@ func _on_body_entered(body: PhysicsBody2D) -> void:
 	animated_sprite.play("down")
 	
 	if door != "":
-		Global.doors[door] = true
+		Doors.id[door] = true
 	
 	emit_signal("pressed")
 
@@ -33,6 +33,6 @@ func _on_body_exited(body: PhysicsBody2D) -> void:
 	# even though the platform is pressed.
 	# As a result, I can't target doors in other scenes.
 	if door != "" :
-		Global.doors[door] = false
+		Doors.id[door] = false
 
 	emit_signal("unpressed")

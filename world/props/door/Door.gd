@@ -6,7 +6,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	if Global.doors[door] == true:
+	if Doors.id[door] == true:
 		self.hide()
 		$CollisionShape2D.disabled = true
 	else:

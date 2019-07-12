@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/curtain.png-f8b02d8ad63e673b890279d0dce11009.stex"
+path="res://.import/radial.jpg-097681f37131685a109d22ce4bb49826.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shaders/blacktransition/curtain.png"
-dest_files=[ "res://.import/curtain.png-f8b02d8ad63e673b890279d0dce11009.stex" ]
+source_file="res://shaders/masks/radial.jpg"
+dest_files=[ "res://.import/radial.jpg-097681f37131685a109d22ce4bb49826.stex" ]
 
 [params]
 
