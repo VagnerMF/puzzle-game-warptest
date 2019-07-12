@@ -81,7 +81,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Doors="*res://autoload/Doors.gd"
-SceneTransition="*res://autoload/SceneTransition/SceneTransition.tscn"
+SceneTransition="*res://autoload/ScreenTransition/ScreenTransition.tscn"
 
 [display]
 
