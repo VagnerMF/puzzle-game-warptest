@@ -46,6 +46,8 @@ func create_level(level_key:String) -> void:
 func portal(level_key:String, portal_id:String, target_level_key:String, target_portal_id:String):
 	print("WARP FROM "+level_key+"-"+portal_id+" TO "+target_level_key+"-"+target_portal_id)
 	
+	yield(ScreenTransition.go_to_black(), "completed")
+	
 	# Save the player and remove it from the SceneTree
 	var current_level_node = levels[current_level_key]
 	var player = current_level_node.get_node("Player")
@@ -73,3 +75,5 @@ func portal(level_key:String, portal_id:String, target_level_key:String, target_
 				object.primed = false
 				player.set_position(object.get_out_direction(grid_cell_size))
 				break
+	
+	yield(ScreenTransition.go_to_play(), "completed")
