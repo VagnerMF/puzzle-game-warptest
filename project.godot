@@ -81,7 +81,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Doors="*res://autoload/Doors.gd"
-SceneTransition="*res://autoload/ScreenTransition/ScreenTransition.tscn"
+ScreenTransition="*res://autoload/ScreenTransition/ScreenTransition.tscn"
 
 [display]
 
@@ -129,6 +129,7 @@ move_right={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
