@@ -1,9 +1,9 @@
 class_name Player extends KinematicBody2D
 
 
-onready var animated_sprite : AnimatedSprite = $AnimatedSprite
-onready var spr_w = $AnimatedSprite.frames.get_frame($AnimatedSprite.animation, $AnimatedSprite.frame).get_size().x
-onready var spr_h = $AnimatedSprite.frames.get_frame($AnimatedSprite.animation, $AnimatedSprite.frame).get_size().y
+onready var animated_sprite := $AnimatedSprite
+onready var spr_w : float = $AnimatedSprite.frames.get_frame($AnimatedSprite.animation, $AnimatedSprite.frame).get_size().x
+onready var spr_h : float = $AnimatedSprite.frames.get_frame($AnimatedSprite.animation, $AnimatedSprite.frame).get_size().y
 export var move_speed : = 250.0
 export var push_speed : = 125.0
 var motion : = Vector2()
@@ -13,8 +13,9 @@ const PUSH_TIME := 0.35
 var push_timer := 0.0
 
 
-func _ready():
-	print("Player anim texture: %dx%d" % [spr_w, spr_h])
+func _ready() -> void:
+	#print("Player anim texture: %dx%d" % [spr_w, spr_h])
+	pass
 
 
 func _physics_process(delta: float) -> void:
@@ -81,3 +82,9 @@ func update_animation(motion: Vector2) -> void:
 		animated_sprite.stop()
 	else:
 		animated_sprite.play(direction)
+
+
+func _on_AnimatedSprite_frame_changed():
+	match animated_sprite.frame:
+		1:
+			$WalkAudio.play()
