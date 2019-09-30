@@ -4,8 +4,8 @@ The aim of this Godot project is to create a robust prototype for 2D puzzle and 
 
 I decided that this project was necessary because I did not see any Godot tutorials or examples of this very specific set of mechanics. By that I mean:
 
-* A 2D topdown camera perspective
-* Free, cardinal player movement
+* A 2D top-down camera perspective
+* Free, cardinal/intercardinal direction movement for the player
 * Grid-based, modular levels whose state can be stored and brought back from memory
 * The ability for the player to push objects around on the level's grid
 
