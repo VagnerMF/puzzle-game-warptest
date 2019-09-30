@@ -19,7 +19,7 @@ More notes about my journey and resources can be found in the Github Project Boa
 
 I hope to eventually open source this prototype, but a lot of the codebase is messy and bad. All I can guarantee is that it works!
 
-### UPDATE Fall 2019:
+## UPDATE Fall 2019:
 
 I was able to get this prototype to an acceptable state! I used it in a game jam to make a game called "ZERO" ! Play it here:
 
